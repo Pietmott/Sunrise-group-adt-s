@@ -35,7 +35,6 @@ public class SlaaponderzoekService {
 
         // 2. Controleer of het bed daadwerkelijk vrij is (Consistentie bewaken)
         if (bed.isBezet()) {
-            // Deze Exception triggert automatisch een ROLLBACK van de hele transactie.
             throw new IllegalStateException("Fout: Het bed is al bezet! Het inplannen wordt geannuleerd.");
         }
 
@@ -52,6 +51,5 @@ public class SlaaponderzoekService {
         bedDAO.save(bed);
         slaaponderzoekDAO.save(onderzoek);
 
-        // Als alles hier succesvol doorloopt, doet Spring automatisch een COMMIT.
     }
 }
