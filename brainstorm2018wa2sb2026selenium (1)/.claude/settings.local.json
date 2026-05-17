@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\vanov\\\\Downloads\\\\brainstorm2018wa2sb2026selenium \\(1\\)\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName)"
+    ]
+  }
+}

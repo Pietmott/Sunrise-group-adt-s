@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welkom!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/css/bootstrap.min.css}"/>
+    <link href="../static/css/core.css" rel="stylesheet" media="screen" th:href="@{/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">Header</div>
+<div class="container">
+    <div class="text-left">
+        <h1>Details van patiënt</h1>
+        <p><b>Id:</b> <span th:text="${patient.id}">id</span></p>
+        <p><b>Voornaam:</b> <span th:text="${patient.voornaam}">voornaam</span></p>
+        <p><b>Familienaam:</b> <span th:text="${patient.familienaam}">familienaam</span></p>
+        <p><b>E-mailadres:</b> <span th:text="${patient.emailadres}">emailadres</span></p>
+        <p>
+            <b>Toegewezen bed:</b>
+            <span th:if="${patient.bed != null}">
+                <span th:text="${patient.bed.locatie}">locatie</span>
+                (bed id: <span th:text="${patient.bed.id}">bedid</span>)
+            </span>
+            <span th:if="${patient.bed == null}">Geen bed toegewezen</span>
+        </p>
+        <a th:href="@{/bedToewijzing.html(patientId=${patient.id})}">Bed toewijzen</a>
+        &nbsp;|&nbsp;
+        <a th:href="@{/home.html}">Lijst van alle patiënten</a>
+    </div>
+    <div th:replace="fragments/footer :: footer">&copy; 2013 The Static Templates</div>
+</div>
+</body>
+</html>
